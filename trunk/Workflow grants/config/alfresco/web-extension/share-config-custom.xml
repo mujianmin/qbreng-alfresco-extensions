@@ -1,0 +1,29 @@
+<alfresco-config>
+	<!-- Workflow config section -->
+	<config evaluator="string-compare" condition="Workflow" replace="true">
+		<!-- A list of workflow definitions that are NOT displayed in Share -->
+		<hidden-workflows>
+			<!-- Hide all WCM related workflows -->
+			<workflow name="jbpm$wcmwf:*" />
+			<workflow name="jbpm$wf:articleapproval" />
+			<workflow name="jbpm$inwf:invitation-nominated" />
+			<workflow name="jbpm$imwf:invitation-moderated" />
+		</hidden-workflows>
+
+		<!-- A list of workflow definitions that are NOT displayed in Share based 
+			on grant options - grant-type: "user" or "group" - grant-name: group name 
+			or user name allowed -->
+		<grant-workflows>
+			<workflow name="jbpm$wf:adhoc" grant-type="group"
+				grant-name="GROUP_Protocollo" />
+		</grant-workflows>
+
+		<!-- A list of workflow tasks that are NOT displayed in Share -->
+		<hidden-tasks>
+			<!-- Hide all WCM related tasks -->
+			<task type="wcmwf:*" />
+		</hidden-tasks>
+	</config>
+</alfresco-config>
+
+
