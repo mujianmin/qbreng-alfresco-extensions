@@ -46,10 +46,10 @@ Change into the new directory "Workflow grants/config/alfresco/web-extension" an
 In this example the group `GROUP_Reviewers` ONLY can start the `ad-hoc` workflow. Other groups will not see the ad-hoc workflow in the start-workflow page on Share.
 
 Here a screenshot of the "Start Workflow" page for a user belonging `Reviewers` group
-http://code.google.com/p/qbreng-alfresco-extensions/source/browse/trunk/Workflow%20grants/docs/start-wf-reviewers.png
+http://qbreng-alfresco-extensions.googlecode.com/svn/trunk/Workflow%20grants/docs/start-wf-reviewers.png
 
-And here another one for a user not belonging to `Revierers
-http://code.google.com/p/qbreng-alfresco-extensions/source/browse/trunk/Workflow%20grants/docs/start-wf-othergroups.png`
+And here another one for a user not belonging to `Reviewers`
+http://qbreng-alfresco-extensions.googlecode.com/svn/trunk/Workflow%20grants/docs/start-wf-othergroups.png
 
 ==Building==
 {{{
