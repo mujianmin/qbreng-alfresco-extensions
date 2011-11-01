@@ -22,12 +22,12 @@ Change into the new directory "Workflow grants/config/alfresco/web-extension" an
 <code language="xml">
 <alfresco-config>
 
-    <!-- Workflow config section -->
+     <!-- Workflow config section -->
     <config evaluator="string-compare" condition="Workflow" replace="true">
 
         .....
 
-        <!-- 
+         <!-- 
           A list of workflow definitions that are displayed in Share start-workflow page based on grant options 
           - grant-type: "user" or "group" 
           - grant-name: group name or user name (based on grant-type) allowed 
