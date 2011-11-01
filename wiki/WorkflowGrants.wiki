@@ -1,0 +1,14 @@
+#summary Alfresco Share extension for managing which person or group can start a specified workflow
+
+= Introduction =
+
+One of the lacks of Alfresco Workflows is that there's no possibility to allow workflow start and execution based on specified users or groups.
+This simple extension allow this kind of control throw the global config file _share-config-custom.xml_
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
