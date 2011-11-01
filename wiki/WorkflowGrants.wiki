@@ -20,16 +20,27 @@ svn checkout http://qbreng-alfresco-extensions.googlecode.com/svn/trunk/Workflow
 ==Configuration example==
 Change into the new directory "Workflow grants/config/alfresco/web-extension" and modify the `share-config-custom.xml` to suite your needs:
 <code language="xml">
-<!-- 
-   A list of workflow definitions that are displayed in Share start-workflow page based on grant options 
-   - grant-type: "user" or "group" 
-   - grant-name: group name or user name (based on grant-type) allowed 
--->
-<grant-workflows>
+<alfresco-config>
+    <!-- Workflow config section -->
+    <config evaluator="string-compare" condition="Workflow" replace="true">
 
-   <workflow name="jbpm$wf:adhoc" grant-type="group"
-                                 grant-name="GROUP_Reviewers" />
-</grant-workflows>
+        .....
+
+        <!-- 
+          A list of workflow definitions that are displayed in Share start-workflow page based on grant options 
+          - grant-type: "user" or "group" 
+          - grant-name: group name or user name (based on grant-type) allowed 
+        -->
+        <grant-workflows>
+
+           <workflow name="jbpm$wf:adhoc" grant-type="group"
+                                         grant-name="GROUP_Reviewers" />
+        </grant-workflows>
+
+    </config>
+
+</alfresco-config>
+
 </code>
 
 In thie example The group `GROUP_Reviewers` ONLY can start the `ad-hoc` workflow. Other groups will not see the ad-hoc workflow in the start-workflow page on Share.
