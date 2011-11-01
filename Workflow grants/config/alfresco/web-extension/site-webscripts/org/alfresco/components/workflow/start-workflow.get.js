@@ -12,54 +12,58 @@ function getHiddenTaskTypes()
    return hiddenTaskTypes;
 }
 
-function oc(a) {
-  var o = {};
+/**
+ * Utility function
+ * @param {Array} a
+ */
+function oc(a) 
+{
+	var o = {};
 	for(var i=0;i<a.length;i++) 
 	{
 		o[a[i].itemName]='';
 	}
- return o;
+ 	return o;
 }
 
-function getDeniedWorkflowNames() {
+/**
+ * Get denied workflow names
+ */
+function getDeniedWorkflowNames() 
+{
+    var deniedWfNames = [],
+    	myconn = remote.connect("alfresco"),
+		myres = myconn.get("/api/people/"+ user.name +"?groups=true");
    
-   var deniedWfNames = [];
-   var myconn = remote.connect("alfresco");
-   //var myres = myconn.get("/usergroup/getUserGroup");
-   //var myResCurUserName=myconn.get("/currentuser/getCurrentUser");
-   //var myusername = eval('(' + myResCurUserName+ ')').username;
-   
-   var myres = myconn.get("/api/people/"+ user.name +"?groups=true");
-   //var myres = myconn.get("/api/people/codexInitiator2?groups=true");
-   
-   if (myres.status == 200) {
-      //var groups = eval('(' + myres + ')').data;
-	   var groups = eval('(' + myres + ')').groups;
-      
-      var grantwf = config.scoped["Workflow"]["grant-workflows"].childrenMap["workflow"];
-      var i = 0, j = 0, grantwfSize = grantwf.size();
-      if (grantwf) {
-    	  for (i = 0; i < grantwfSize; i++) {
-		    if (grantwf.get(i).attributes["grant-type"] == "group") {
-		    	if (grantwf.get(i).attributes["grant-name"] in oc(groups)) {
-		    	   // L'utente può eseguire il wf perchè il gruppo cui appartiene ha i privilegi
-		    	   //break;
-		    		continue;
+   	if (myres.status == 200) 
+	{
+   		var groups = eval('(' + myres + ')').groups,
+      		grantwf = config.scoped["Workflow"]["grant-workflows"].childrenMap["workflow"];
+      	if (grantwf) 
+		{
+    		for (var i = 0, il = grantwf.size(); i < il; i++) 
+			{
+		    	if (grantwf.get(i).attributes["grant-type"] == "group") 
+				{
+		    		if (grantwf.get(i).attributes["grant-name"] in oc(groups)) 
+					{
+		    	   		// The user can start the workflow because he belongs to the group allowed
+		    			continue;
+		    		}
+		    	} else if (grantwf.get(i).attributes["grant-type"] == "user") 
+				{
+		    		if (grantwf.get(i).attributes["grant-name"] == user.name) 
+					{
+		    	   		// The user can start the workflow because he is the allowed
+		    			continue;
+		    		}
 		    	}
-		    } else if (grantwf.get(i).attributes["grant-type"] == "user") {
-		    	if (grantwf.get(i).attributes["grant-name"] == user.name) {
-		    	   // L'utente può eseguire il wf perchè user abilitato e utente coincidono
-		    	   //break;
-		    		continue;
-		    	}
-		    }
-		    
-	    deniedWfNames.push(grantwf.get(i).attributes["name"]);
-    	  }
-     }
-      	return deniedWfNames;
-   }
-   return [];
+	    	deniedWfNames.push(grantwf.get(i).attributes["name"]);
+ 			}
+     	}
+     	return deniedWfNames;
+   	}
+   	return [];
 }
 
 
