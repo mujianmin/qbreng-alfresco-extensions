@@ -8,6 +8,10 @@ Author: Francesco Valente
 With this simple extension you can view your completed tasks by selecting the appropriated filter in the "My tasks" dashlet.
 See screenshots below:
 
+http://qbreng-alfresco-extensions.googlecode.com/svn/trunk/My%20completed%20tasks/docs/my-tasks-screenshot.png
+
+http://qbreng-alfresco-extensions.googlecode.com/svn/trunk/My%20completed%20tasks/docs/filter-screenshot.png
+
 
 = Installation =
 
