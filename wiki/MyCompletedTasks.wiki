@@ -22,7 +22,7 @@ To install the extension, simply drop the `my-completed-tasks.jar` file into the
 
 Check out the project from svn:
 {{{
-svn checkout http://qbreng-alfresco-extensions.googlecode.com/svn/trunk/Workflow%20grants
+svn checkout http://qbreng-alfresco-extensions.googlecode.com/svn/trunk/My%20completed%20tasks
 }}}
 Change into the new directory
 {{{
