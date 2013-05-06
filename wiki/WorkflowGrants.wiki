@@ -3,6 +3,7 @@
 = Workflow grants extension =
 
 Author: Francesco Valente
+
 Contributor: Luis Sanchez
 
 One of the lacks of Alfresco Workflows is that there's no possibility to allow workflow start and execution based on specified users or groups.
