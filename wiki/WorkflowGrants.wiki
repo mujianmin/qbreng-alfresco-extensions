@@ -44,9 +44,7 @@ Change into the new directory "Workflow grants/config/alfresco/web-extension" an
                         <workflow name="jbpm$wf:articleapproval"/>
 
                         ...
-
                         ...
-
                 </hidden-workflows>
 
 		<!--
