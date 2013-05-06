@@ -103,3 +103,7 @@ The command should build a JAR file named `workflow-grants.jar` in the `dist` di
 = Installation =
 
 To install the extension, simply drop the _workflow-grants.jar_ file into the tomcat/shared/lib folder within your Alfresco installation, and restart the application server to ensure it picks up the changes. You might need to create this folder if it does not already exist.
+
+= Alfresco versions =
+
+The code on trunk works on alfresco 4.x. For alfresco 3.x please refer to branch `alfresco-3.x`
