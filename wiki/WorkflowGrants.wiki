@@ -3,6 +3,7 @@
 = Workflow grants extension =
 
 Author: Francesco Valente
+Contributor: Luis Sanchez
 
 One of the lacks of Alfresco Workflows is that there's no possibility to allow workflow start and execution based on specified users or groups.
 This simple extension allow this kind of control throw the global config file `share-config-custom.xml`
@@ -27,26 +28,52 @@ Change into the new directory "Workflow grants/config/alfresco/web-extension" an
 <code language="xml">
 <alfresco-config>
 
-     <!-- Workflow config section -->
-    <config evaluator="string-compare" condition="Workflow" replace="true">
+        <!-- Workflow config section -->
 
-        .....
+        <config evaluator="string-compare" condition="Workflow" replace="true">
 
-         <!-- 
-          A list of workflow definitions that are displayed in Share start-workflow page based on grant options 
-          - grant-type: "user" or "group" 
-          - grant-name: group name or user name (based on grant-type) allowed 
-        -->
-        <grant-workflows>
+                <!-- A list of workflow definitions that are NOT displayed in Share -->
 
-           <workflow name="jbpm$wf:adhoc" grant-type="group"
-                                         grant-name="GROUP_Reviewers" />
-        </grant-workflows>
+                <hidden-workflows>
 
-    </config>
+                        <!-- Hide all WCM related workflows -->
+
+                        <workflow name="jbpm$wcmwf:*"/>
+
+                        <workflow name="jbpm$wf:articleapproval"/>
+
+                        ...
+
+                        ...
+
+                </hidden-workflows>
+
+		<!--
+                A list of workflow definitions that are displayed in Share start-workflow page based on grant options
+                - grant-type: "user" or "group"
+                - grant-name: group name or user name (based on grant-type) allowed
+                -->
+
+                <grant-workflows>
+
+                        <workflow name="activiti$activitiAdhoc"
+                                  grant-type="group"
+                                  grant-name="GROUP_Reviewers" />
+
+                </grant-workflows>
+
+                <!-- A list of workflow tasks that are NOT displayed in Share  -->
+
+                <hidden-tasks>
+
+                        <!-- Hide all WCM related tasks -->
+                        <task type="wcmwf:*"/>
+
+                </hidden-tasks>
+
+        </config>
 
 </alfresco-config>
-
 </code>
 
 In this example the group `GROUP_Reviewers` ONLY can start the `ad-hoc` workflow. Other groups will not see the ad-hoc workflow in the start-workflow page on Share.
